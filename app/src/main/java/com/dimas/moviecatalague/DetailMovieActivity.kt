@@ -3,6 +3,7 @@ package com.dimas.moviecatalague
 import android.os.Bundle
 import android.view.ViewOutlineProvider
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_detail_movie.*
 
 class DetailMovieActivity : AppCompatActivity() {
@@ -22,6 +23,11 @@ class DetailMovieActivity : AppCompatActivity() {
         img_detail_movie.outlineProvider = ViewOutlineProvider.BACKGROUND
         img_detail_movie.clipToOutline = true
         img_detail_movie.setImageResource(movie.photo)
+
+        Glide.with(this)
+            .load(movie.photo)
+            .into(img_detail_movie)
+
         txt_detail_name.text = movie.name
         txt_detail_release.text = movie.date
         txt_detail_description.text = movie.description

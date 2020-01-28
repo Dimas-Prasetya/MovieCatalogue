@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewOutlineProvider
 import android.widget.BaseAdapter
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_movie.view.*
 
 class MovieAdapter internal constructor(private val context: Context) : BaseAdapter() {
@@ -36,7 +37,11 @@ class MovieAdapter internal constructor(private val context: Context) : BaseAdap
                 txt_name.text = movie.name
                 txt_release_date.text = movie.date
                 txt_description.text = movie.description
-                img_movie.setImageResource(movie.photo)
+
+                Glide.with(context)
+                    .load(movie.photo)
+                    .into(img_movie)
+
                 img_movie.outlineProvider = ViewOutlineProvider.BACKGROUND
                 img_movie.clipToOutline = true
             }
